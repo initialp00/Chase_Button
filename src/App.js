@@ -70,26 +70,22 @@ const combinedCSS = `
   }
 `;
 
-// Inject the styles into the document head
 const styleElement = document.createElement('style');
 styleElement.textContent = combinedCSS;
 document.head.appendChild(styleElement);
 
-// Create a custom cursor element
 const customCursor = document.createElement('div');
 customCursor.classList.add('custom-cursor');
 document.body.appendChild(customCursor);
 
-// Track mouse movement to update the custom cursor position
 document.addEventListener('mousemove', (e) => {
   customCursor.style.left = `${e.clientX}px`;
   customCursor.style.top = `${e.clientY}px`;
 });
-// Function to generate a random position within the chase section
 function getRandomPosition() {
   const chaseSection = document.getElementById('chaseSection');
-  const sectionWidth = chaseSection.clientWidth - 100; // Width of the chase button
-  const sectionHeight = chaseSection.clientHeight - 40; // Height of the chase button
+  const sectionWidth = chaseSection.clientWidth - 100; 
+  const sectionHeight = chaseSection.clientHeight - 40;
 
   const randomX = Math.floor(Math.random() * sectionWidth);
   const randomY = Math.floor(Math.random() * sectionHeight);
@@ -97,7 +93,6 @@ function getRandomPosition() {
   return { x: randomX, y: randomY };
 }
 
-// Function to handle mouseover event on the chase button
 function handleMouseOver(event) {
   const newPosition = getRandomPosition();
   event.target.style.transform = `translate(${newPosition.x}px, ${newPosition.y}px)`;
@@ -107,7 +102,6 @@ function handleMouseOver(event) {
   event.target.textContent = texts[randomIndex];
 }
 
-// Create chase section, label, and button and attach mouseover event listener
 const chaseSection = document.createElement('div');
 chaseSection.classList.add('chase-section');
 chaseSection.id = 'chaseSection';
@@ -115,12 +109,12 @@ document.body.appendChild(chaseSection);
 
 const chaseLabel = document.createElement('div');
 chaseLabel.classList.add('chase-label');
-chaseLabel.textContent = 'Chase Button'; // Label text
+chaseLabel.textContent = 'Chase Button'; 
 
 const chaseButton = document.createElement('button');
 chaseButton.classList.add('chase-button');
 chaseButton.textContent = 'Click me';
-chaseButton.style.transform = `translate(0, 0)`; // Initial position
+chaseButton.style.transform = `translate(0, 0)`;
 
 chaseButton.addEventListener('mouseover', handleMouseOver);
 
